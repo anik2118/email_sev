@@ -3,12 +3,17 @@ import datetime
 import urllib.request
 
 app = Flask(__name__)
-
+count=0
 # Serve a default page. This function is not required. Serving up a spy.gif for the homepage.
 @app.route('/')
 def my_function():
     spy_meme = "tracker.png"
+    count+=1
     return send_file(spy_meme, mimetype="image/gif")
+
+@app.route('/fetch_data')
+def fetch_data():   
+    return count
 
 @app.route('/image')
 def my_spy_pixel():
