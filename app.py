@@ -15,7 +15,7 @@ def my_function():
 
 @app.route('/fetch_data')
 def fetch_data():   
-    return count
+    return str(count)
 
 @app.route('/image')
 def my_spy_pixel():
