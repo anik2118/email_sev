@@ -1,7 +1,5 @@
 from flask import Flask, send_file, request
-import datetime
-import urllib.request
-count=0
+count=-2
 app = Flask(__name__)
 
 # Serve a default page. This function is not required. Serving up a spy.gif for the homepage.
