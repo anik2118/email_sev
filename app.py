@@ -5,7 +5,7 @@ to=""
 # Serve a default page. This function is not required. Serving up a spy.gif for the homepage.
 @app.route('/')
 def my_function():
-    global count
+    global count,to
     to = request.args.get('to')
     spy_meme = "tracker.png"
     count+=1
@@ -18,4 +18,5 @@ def fetch_data():
 
 @app.route('/reciever')
 def reciever_():
+    global to
     return to
