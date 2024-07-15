@@ -1,17 +1,19 @@
-from flask import Flask, send_file, request
-count=0
+from flask import Flask, send_file
+
+count = 0
 app = Flask(__name__)
 
-# Serve a default page. This function is not required. Serving up a spy.gif for the homepage.
+# Endpoint for serving the tracking pixel
 @app.route('/')
-
 def my_function():
     global count
     spy_meme = "tracker.png"
-    count+=1
+    count += 1
     return send_file(spy_meme, mimetype="image/gif")
 
+# Endpoint for fetching the current count
 @app.route('/fetch_data')
-def fetch_data():   
+def fetch_data():
     return str(count)
+
 
