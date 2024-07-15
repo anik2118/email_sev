@@ -14,7 +14,5 @@ def my_function():
 def fetch_data():   
     return str(count)
 
-@app.route('/alive_server')
-def alive_server():
-    return "Server is alive"
+
 
