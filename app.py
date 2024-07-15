@@ -16,7 +16,3 @@ def fetch_data():
     return str(count)
 
 
-@app.route('/reciever')
-def reciever_():
-    global to
-    return to
