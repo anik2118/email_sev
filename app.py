@@ -5,7 +5,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Connect to MongoDB
-client = MongoClient("mongodb://localhost:27017")  # Replace with your MongoDB connection string
+client = MongoClient("mongodb+srv://anikghoshr123:iSOpoAz1cibNO3we@emailsender0.ciaq5yv.mongodb.net/")  # Replace with your MongoDB connection string
 db = client["email_tracker_db"]
 email_logs_collection = db["email_logs"]
 
