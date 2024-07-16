@@ -20,15 +20,13 @@ print(f"Current count: {count}")
 @app.route('/user/<username>', methods=['GET'])
 def my_function(username):
     global count
-    email = request.args.get(username)
-    print(email)
-    print(username)
+    print(f"The email holder opened the mail:{username}")
     spy_meme = "tracker.png"
     
     # Increment the count and log the event in TinyDB
     count += 1
     email_logs_table.insert({
-        "email": email,
+        "email holder": username,
         "action": "opened",
         "timestamp": str(datetime.utcnow())
     })
@@ -44,3 +42,4 @@ def fetch_data():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
