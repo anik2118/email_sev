@@ -1,7 +1,6 @@
 from flask import Flask, send_file, request
 from tinydb import TinyDB, Query
 from datetime import datetime
-import os
 
 app = Flask(__name__)
 
@@ -12,6 +11,10 @@ email_logs_table = db.table('email_logs')
 # Initialize count from TinyDB
 def get_initial_count():
     return len(email_logs_table)
+
+def get_email_addre():
+    query = Query()
+    return email_logs_table.search(query.email_holder )
 
 count = get_initial_count()
 print(f"Current count: {count}")
@@ -24,7 +27,7 @@ def my_function(username):
     global count
     print(f"The email holder opened the mail:{username}")
     spy_meme = "tracker.png"
-    
+
     # Increment the count and log the event in TinyDB
     count += 1
     email_logs_table.insert({
@@ -40,7 +43,8 @@ def my_function(username):
 @app.route('/fetch_data')
 def fetch_data():
     count = get_initial_count()
-    return str(count)
+    username=get_email_addre()
+    return str(count),username
 
 
     
