@@ -13,6 +13,7 @@ def my_function():
     count += 1
     with open('no_of_email.txt', 'w') as file:
         file.write(str(count))
+    print(f"count _value {count}")
     return send_file(spy_meme, mimetype="image/gif")
 
 # Endpoint for fetching the current count
