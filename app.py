@@ -25,6 +25,7 @@ def my_function(username):
     
     # Increment the count and log the event in TinyDB
     count += 1
+    print(f"count: {count}")
     email_logs_table.insert({
         "email holder": username,
         "action": "opened",
