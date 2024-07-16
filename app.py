@@ -17,10 +17,10 @@ count = get_initial_count()
 print(f"Current count: {count}")
 
 # Endpoint for serving the tracking pixel
-@app.route('/')
-def my_function():
+@app.route('/user/<username>', methods=['GET'])
+def my_function(username):
     global count
-    email = request.args.get('email')
+    email = request.args.get(username)
     print(email)
     spy_meme = "tracker.png"
     
