@@ -1,17 +1,17 @@
 from flask import Flask, send_file, request
-from pymongo import MongoClient
+from tinydb import TinyDB, Query
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 
-# Connect to MongoDB
-client = MongoClient("mongodb+srv://anikghoshr123:iSOpoAz1cibNO3we@emailsender0.ciaq5yv.mongodb.net/")  # Replace with your MongoDB connection string
-db = client["email_tracker_db"]
-email_logs_collection = db["email_logs"]
+# Initialize TinyDB
+db = TinyDB('email_tracker_db.json')
+email_logs_table = db.table('email_logs')
 
-# Initialize count from MongoDB
+# Initialize count from TinyDB
 def get_initial_count():
-    return email_logs_collection.count_documents({})
+    return len(email_logs_table)
 
 count = get_initial_count()
 print(f"Current count: {count}")
@@ -23,12 +23,12 @@ def my_function():
     email = request.args.get('email')
     spy_meme = "tracker.png"
     
-    # Increment the count and log the event in MongoDB
+    # Increment the count and log the event in TinyDB
     count += 1
-    email_logs_collection.insert_one({
+    email_logs_table.insert({
         "email": email,
         "action": "opened",
-        "timestamp": datetime.utcnow()
+        "timestamp": str(datetime.utcnow())
     })
     print(f"count _value {count}")
     
@@ -40,3 +40,5 @@ def fetch_data():
     count = get_initial_count()
     return str(count)
 
+if __name__ == '__main__':
+    app.run(debug=True)
