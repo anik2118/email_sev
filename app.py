@@ -15,9 +15,7 @@ def get_initial_count():
 
 count = get_initial_count()
 print(f"Current count: {count}")
-@app.route("/")
-def hello():
-    return "Hello, World!"
+
 # Endpoint for serving the tracking pixel
 @app.route('/user/<username>', methods=['GET'])
 def my_function(username):
@@ -27,7 +25,6 @@ def my_function(username):
     
     # Increment the count and log the event in TinyDB
     count += 1
-    print(f"count: {count}")
     email_logs_table.insert({
         "email holder": username,
         "action": "opened",
@@ -43,6 +40,5 @@ def fetch_data():
     count = get_initial_count()
     return str(count)
 
-if __name__ == '__main__':
-    app.run(debug=True)
 
+    
