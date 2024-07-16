@@ -15,7 +15,9 @@ def get_initial_count():
 
 count = get_initial_count()
 print(f"Current count: {count}")
-
+@app.route("/")
+def hello():
+    return "Hello, World!"
 # Endpoint for serving the tracking pixel
 @app.route('/user/<username>', methods=['GET'])
 def my_function(username):
