@@ -21,6 +21,7 @@ print(f"Current count: {count}")
 def my_function():
     global count
     email = request.args.get('email')
+    print(email)
     spy_meme = "tracker.png"
     
     # Increment the count and log the event in TinyDB
