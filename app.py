@@ -1,6 +1,8 @@
 from flask import Flask, send_file
 
-count = 0
+with open('no_of_email.txt', 'r') as file:
+    count = int(file.read().strip())  # Convert to int and strip whitespace
+    print(f"Current count: {count}")
 app = Flask(__name__)
 
 # Endpoint for serving the tracking pixel
