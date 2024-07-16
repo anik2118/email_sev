@@ -11,6 +11,8 @@ def my_function():
     global count
     spy_meme = "tracker.png"
     count += 1
+    with open('no_of_email.txt', 'w') as file:
+        file.write(str(count))
     return send_file(spy_meme, mimetype="image/gif")
 
 # Endpoint for fetching the current count
