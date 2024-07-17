@@ -12,10 +12,6 @@ email_logs_table = db.table('email_logs')
 def get_initial_count():
     return len(email_logs_table)
 
-def get_email_addre():
-    query = Query()
-    return email_logs_table.search(query.email_holder )
-
 count = get_initial_count()
 print(f"Current count: {count}")
 @app.route("/")
@@ -30,11 +26,7 @@ def my_function(username):
 
     # Increment the count and log the event in TinyDB
     count += 1
-    email_logs_table.insert({
-        "email holder": username,
-        "action": "opened",
-        "timestamp": str(datetime.utcnow())
-    })
+    print(f'the person has opened the mail{username}')
     print(f"count _value {count}")
     
     return send_file(spy_meme, mimetype="image/gif")
@@ -43,8 +35,7 @@ def my_function(username):
 @app.route('/fetch_data')
 def fetch_data():
     count = get_initial_count()
-    username=get_email_addre()
-    return str(count),username
+    return str(count)
 
 
     
