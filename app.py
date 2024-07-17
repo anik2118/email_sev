@@ -38,9 +38,7 @@ def hello():
 @app.route('/user/<username>', methods=['GET'])
 def my_function(username):
     global count
-    print(f"The email holder opened the mail: {username}")
     spy_meme = "tracker.png"
-
     # Increment the count and log the event in SQLite
     count += 1
     print(f'The person has opened the mail: {username}')
